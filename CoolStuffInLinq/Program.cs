@@ -80,7 +80,7 @@ namespace CoolStuffInLinq
         }
         static void Show(List<Person> item)
         {
-            Console.WriteLine($"  {item.LastName} {item.Age}{item.Height} {item.Gender}");
+
         }
 
     }
