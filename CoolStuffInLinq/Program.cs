@@ -27,29 +27,32 @@ namespace CoolStuffInLinq
 
             #region Sum by Age
             //int age= people.Sum(p => p.Age);
-            // Console.WriteLine(age);
+            //Console.WriteLine(age);
             #endregion
-
+            Console.WriteLine();
             #region Average
             //int avarageAge = people.Sum(p => p.Age) / people.Count();
             //Console.WriteLine(avarageAge);
             #endregion
 
             #region OrderBy people's collection
-            //var peopleYoungerThen55 = people.Where(p => p.Age < 55).OrderBy(p => p.Age);
+            var peopleYoungerThen55 = people.Where(p => p.Age < 55).OrderBy(p => p.Age);
 
-            //var sorterdAged = people.OrderBy(p => p.Age);
-
+            var sorterdAged = people.OrderBy(p => p.Age);
+            Console.WriteLine("Avarage:");
+            Show(sorterdAged);
             //foreach (var item in sorterdAged)
             //{
             //    Console.WriteLine(item.FirstName + " " + item.Age);
             //}
-            //Console.WriteLine();
+            Console.WriteLine();
             //foreach (var item in peopleYoungerThen55)
             //{
-            //    Console.WriteLine(item.FirstName + " " +item.Age);
+            //    Console.WriteLine(item.FirstName + " " + item.Age);
 
             //}
+            Console.WriteLine("Younger Then 55:");
+            Show(peopleYoungerThen55);
             #endregion
 
             #region Show people that start whit letter...
@@ -61,13 +64,12 @@ namespace CoolStuffInLinq
             //    Console.WriteLine(item.LastName);
             //}
             #endregion
-
+            Console.WriteLine();
             #region Contains letter
-            //var peopleWithLetterOInName = people.Where(p => p.LastName.ToUpper().Contains("O"));
-            //foreach (var item in peopleWithLetterOInName)
-            //{
-            //    Console.WriteLine(item.LastName);
-            //}
+            var peopleWithLetterOInName = people.Where(p => p.LastName.ToUpper().Contains("O"));
+            Console.WriteLine("People with Letter O In Name:");
+            Show(peopleWithLetterOInName);
+           
             #endregion
             Console.WriteLine();
 
@@ -78,12 +80,17 @@ namespace CoolStuffInLinq
             //Console.WriteLine(MaxAge);
             #endregion
         }
-        static void Show(List<Person> item)
-        {
 
+        public static void Show(IEnumerable<Person> people)
+        {
+            foreach (var item in people)
+            {
+                Console.WriteLine($"{item.FirstName} {item.LastName.PadRight(5)}\t\t Age: {item.Age}\t Heigth: {item.Height}\t Gender: {item.Gender}");
+            }
         }
 
     }
+
     public class Person
     {
         public int Id { get; set; }
